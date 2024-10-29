@@ -26,7 +26,7 @@ RUN npm install
 WORKDIR /usr/src/app
 
 # Porta do backend e frontend
-EXPOSE 8080 5000
+EXPOSE 8080 
 
 # Comando para iniciar ambos os servidores com concurrently
 CMD ["npm", "start"]
