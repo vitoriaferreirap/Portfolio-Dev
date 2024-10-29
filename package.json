@@ -1,0 +1,22 @@
+{
+  "name": "portfolio_web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "concurrently \"npm run start-backend\" \"npm run start-frontend\"",
+    "start-backend": "cd Backend && npm start",
+    "start-frontend": "cd Frontend && npm start"
+},
+  "dependencies": {
+    "concurrently": "^9.0.1",
+    "express": "^4.21.1",
+    "http-server": "^14.1.1",
+    "mongoose": "^8.7.3",
+    "node.js": "^0.0.1-security"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
