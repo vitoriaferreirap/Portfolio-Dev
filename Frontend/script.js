@@ -28,15 +28,19 @@ var texto2 = textAnimado2.textContent.trim(); // Texto do segundo h1
 
 function animarTexto1() {
   textAnimado.textContent = ""; // Limpa o conteúdo original
-  textAnimado2.textContent = ""; 
+  textAnimado2.textContent = "";
   // Adiciona cada letra do primeiro texto, com um atraso de 100 milissegundos
   for (var i = 0; i < texto1.length; i++) {
-    setTimeout(function(i) {
-      textAnimado.textContent += texto1[i];
-      if (i === texto1.length - 1) {
-        setTimeout(animarTexto2, 1000); // Após terminar o primeiro texto, inicia o segundo
-      }
-    }, 100 * i, i);
+    setTimeout(
+      function (i) {
+        textAnimado.textContent += texto1[i];
+        if (i === texto1.length - 1) {
+          setTimeout(animarTexto2, 1000); // Após terminar o primeiro texto, inicia o segundo
+        }
+      },
+      100 * i,
+      i
+    );
   }
 }
 
@@ -44,12 +48,16 @@ function animarTexto2() {
   // Limpa o conteúdo original do segundo texto
   // Adiciona cada letra do segundo texto, com um atraso de 100 milissegundos
   for (var j = 0; j < texto2.length; j++) {
-    setTimeout(function(j) {
-      textAnimado2.textContent += texto2[j];
-      if (j === texto2.length - 1) {
-        setTimeout(animarTexto1, 1000); // Após terminar o segundo texto, reinicia o primeiro
-      }
-    }, 100 * j, j);
+    setTimeout(
+      function (j) {
+        textAnimado2.textContent += texto2[j];
+        if (j === texto2.length - 1) {
+          setTimeout(animarTexto1, 1000); // Após terminar o segundo texto, reinicia o primeiro
+        }
+      },
+      100 * j,
+      j
+    );
   }
 }
 
@@ -100,10 +108,7 @@ function mostrarHabilidades() {
   // Verifica se as habilidades estão visíveis e se a classe 'mostrar' já está aplicada
   if (habilidadesVisiveis && !habilidades.classList.contains("mostrar")) {
     habilidades.classList.add("mostrar");
-  } else if (
-    !habilidadesVisiveis &&
-    habilidades.classList.contains("mostrar")
-  ) {
+  } else if (!habilidadesVisiveis && habilidades.classList.contains("mostrar")) {
     habilidades.classList.remove("mostrar");
   }
 }
@@ -116,7 +121,7 @@ mostrarHabilidades();
 
 //ELEMENTOS CRIADOS DINAMICOS COM RECUPERAÇÃO DE DADOS BACKEND.
 function criarImgBtn() {
-  fetch("https://portfolio2-0-k2jz3gicva-uw.a.run.app/files")
+  fetch("https://portfolio2-0-906020903231.us-west1.run.app/files")
     .then((resp) => resp.json())
     .then((data) => {
       const minhaDiv = document.getElementById("minhaDiv");
@@ -125,22 +130,21 @@ function criarImgBtn() {
         const button = document.createElement("button");
         button.classList.add("btn_modal");
 
-        const imageUrl = `https://portfolio2-0-k2jz3gicva-uw.a.run.app/files/index/${index}`;
+        const imageUrl = `https://portfolio2-0-906020903231.us-west1.run.app/files/index/${index}`;
 
         // Criar a imagem
         const img = document.createElement("img");
         img.src = imageUrl;
         img.alt = "Imagem do botão"; // Adicione um atributo alt para acessibilidade
 
-         // Cria o texto
-         const buttonText = document.createElement("span");
-         buttonText.classList.add("button-text");
-         buttonText.textContent = "Saiba mais";
+        // Cria o texto
+        const buttonText = document.createElement("span");
+        buttonText.classList.add("button-text");
+        buttonText.textContent = "Saiba mais";
 
         // Adicionar a imagem como filho do botão
         button.appendChild(img);
         button.appendChild(buttonText);
-
 
         // Adicionar evento de clique ao botão
         button.addEventListener("click", function () {
@@ -155,7 +159,7 @@ function criarImgBtn() {
 
 // Função para buscar vídeo pelo índice
 function buscarVideoPorIndex(index) {
-  fetch("https://portfolio2-0-k2jz3gicva-uw.a.run.app/videos")
+  fetch("https://portfolio2-0-906020903231.us-west1.run.app/videos")
     .then((resp) => {
       if (!resp.ok) {
         throw new Error("Erro ao buscar vídeos");
@@ -183,7 +187,7 @@ function exibirDetalhesDoVideo(video, index) {
   const videoElement = document.createElement("video");
   videoElement.classList.add("video_Element");
 
-  const videoUrl = `https://portfolio2-0-k2jz3gicva-uw.a.run.app/videos/index/${index}`;
+  const videoUrl = `https://portfolio2-0-906020903231.us-west1.run.app/videos/index/${index}`;
   console.log("URL do vídeo:", videoUrl);
 
   const startTime = performance.now();
@@ -214,7 +218,6 @@ function exibirDetalhesDoVideo(video, index) {
   linkElement.classList.add("linkElement");
   linkElement.target = "_blank"; // Adiciona o atributo target com o valor "_blank" abrir link em outra aba
 
-
   const modalContent = document.getElementById("modalContent");
   modalContent.innerHTML = "";
   modalContent.appendChild(tituloElement);
@@ -241,7 +244,7 @@ function enviarFeedback() {
       nome: nome,
       opiniao: opiniao,
     };
-    fetch("https://portfolio2-0-k2jz3gicva-uw.a.run.app/feedback", {
+    fetch("https://portfolio2-0-906020903231.us-west1.run.app/feedback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -255,9 +258,7 @@ function enviarFeedback() {
       })
       .catch((error) => {
         console.error("erro ao enviar feedback", error);
-        alert(
-          "Ocorreu um erro ao enviar seu feedback. Por favor, tente novamente."
-        );
+        alert("Ocorreu um erro ao enviar seu feedback. Por favor, tente novamente.");
       });
   }
 }
