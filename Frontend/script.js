@@ -121,7 +121,7 @@ mostrarHabilidades();
 
 //ELEMENTOS CRIADOS DINAMICOS COM RECUPERAÇÃO DE DADOS BACKEND.
 function criarImgBtn() {
-  fetch("https://portfolio2-0-906020903231.us-west1.run.app/files")
+  fetch("https://portfolio-dev-575409997123.us-east1.run.app/files")
     .then((resp) => resp.json())
     .then((data) => {
       const minhaDiv = document.getElementById("minhaDiv");
@@ -130,7 +130,7 @@ function criarImgBtn() {
         const button = document.createElement("button");
         button.classList.add("btn_modal");
 
-        const imageUrl = `https://portfolio2-0-906020903231.us-west1.run.app/files/index/${index}`;
+        const imageUrl = `https://portfolio-dev-575409997123.us-east1.run.app/files/index/${index}`;
 
         // Criar a imagem
         const img = document.createElement("img");
@@ -159,7 +159,7 @@ function criarImgBtn() {
 
 // Função para buscar vídeo pelo índice
 function buscarVideoPorIndex(index) {
-  fetch("https://portfolio2-0-906020903231.us-west1.run.app/videos")
+  fetch("https://portfolio-dev-575409997123.us-east1.run.app/videos")
     .then((resp) => {
       if (!resp.ok) {
         throw new Error("Erro ao buscar vídeos");
@@ -187,7 +187,7 @@ function exibirDetalhesDoVideo(video, index) {
   const videoElement = document.createElement("video");
   videoElement.classList.add("video_Element");
 
-  const videoUrl = `https://portfolio2-0-906020903231.us-west1.run.app/videos/index/${index}`;
+  const videoUrl = `https://portfolio-dev-575409997123.us-east1.run.app/videos/index/${index}`;
   console.log("URL do vídeo:", videoUrl);
 
   const startTime = performance.now();
@@ -244,7 +244,7 @@ function enviarFeedback() {
       nome: nome,
       opiniao: opiniao,
     };
-    fetch("https://portfolio2-0-906020903231.us-west1.run.app/feedback", {
+    fetch("https://portfolio-dev-575409997123.us-east1.run.app/feedback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
