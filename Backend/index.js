@@ -19,7 +19,11 @@ app.use(videoRouter);
 
 // Configuração para servir arquivos estáticos
 const frontendPath = path.join(__dirname, "../Frontend");
+const cssPath = path.join(__dirname, "../Frontend/css");
+
 app.use(express.static(frontendPath));
+app.use("/css", express.static(cssPath));
+
 app.use(express.urlencoded({ extended: true }));
 mongoose
   .connect(process.env.MONGODB_URI)

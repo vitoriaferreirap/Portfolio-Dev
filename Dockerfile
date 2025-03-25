@@ -12,6 +12,7 @@ RUN npm install
 
 # Copia os diretórios Backend e Frontend para o diretório de trabalho
 COPY ./Backend ./Backend
+WORKDIR /usr/src/app/Frontend
 COPY ./Frontend ./Frontend
 
 # Define o diretório de trabalho para a raiz do projeto
