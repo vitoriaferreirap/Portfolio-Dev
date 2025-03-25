@@ -1,32 +1,24 @@
-# Use uma imagem Node.js como base
+# Usa a imagem base do Node.js
 FROM node:18
 
-# Defina o diretório de trabalho para a aplicação
+# Define o diretório de trabalho no container
 WORKDIR /usr/src/app
 
-# Copie o package.json e package-lock.json para instalar as dependências principais (concurrently)
+# Copia o package.json e package-lock.json para instalar as dependências
 COPY package*.json ./
+
+# Instala as dependências
 RUN npm install
 
-# Copie o backend e o frontend para dentro do container
-COPY Backend /usr/src/app/Backend
-COPY Frontend /usr/src/app/Frontend
+# Copia os diretórios Backend e Frontend para o diretório de trabalho
+COPY ./Backend ./Backend
+COPY ./Frontend ./Frontend
 
-# Instale as dependências do backend
-WORKDIR /usr/src/app/Backend
-COPY Backend/package*.json ./
-RUN npm install
-
-# Instale as dependências do frontend
-WORKDIR /usr/src/app/Frontend
-COPY Frontend/package*.json ./
-RUN npm install
-
-# Volte para o diretório principal para iniciar ambos os servidores
+# Define o diretório de trabalho para a raiz do projeto
 WORKDIR /usr/src/app
 
-# Exponha a porta do backend
+# Expõe a porta para o container
 EXPOSE 8080
 
-# Comando para iniciar ambos os servidores com concurrently
+# Comando para rodar o projeto
 CMD ["npm", "start"]

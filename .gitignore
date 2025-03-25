@@ -1,2 +1,14 @@
-node_modules/
-*.json
+# Ignora node_modules em todas as pastas
+**/node_modules/
+
+# Ignora package-lock.json em todas as pastas
+**/package-lock.json
+
+# Ignora arquivos .env em todas as pastas
+**/.env
+
+
+# Ignora arquivos específicos no Frontend
+Frontend/css/estilo.css
+Frontend/css/estilo.css.map
+Frontend/img
