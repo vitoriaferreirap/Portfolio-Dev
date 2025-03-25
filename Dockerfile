@@ -12,11 +12,10 @@ RUN npm install
 
 # Copia os diretórios Backend e Frontend para o diretório de trabalho
 COPY ./Backend ./Backend
-WORKDIR /usr/src/app/Frontend
 COPY ./Frontend ./Frontend
 
-# Define o diretório de trabalho para a raiz do projeto
-WORKDIR /usr/src/app
+# Define o diretório de trabalho para a raiz do projeto (Frontend ou Backend se necessário)
+WORKDIR /usr/src/app/Frontend
 
 # Expõe a porta para o container
 EXPOSE 8080
